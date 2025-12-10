@@ -9,8 +9,12 @@ const DashboardPage = async () => {
 
     return (
         <section>
-            <h1 className="text-2xl font-bold">Dashboard</h1>
-            {session && <p>Welcome {session.user?.name?.split(" ")[0]}!</p>}
+            {session && (
+                <>
+                    <h2 className="text-[16px] font-bold">Welcome {session.user?.name?.split(" ")[0]}!</h2>
+                    <p className="text-[12px] font-mono">{session.user?.email}</p>
+                </>
+            )}
         </section>
     )
 }
