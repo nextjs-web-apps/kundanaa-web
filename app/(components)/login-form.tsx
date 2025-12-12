@@ -116,7 +116,7 @@ const LoginOrRegister = () => {
             <section className="max-w-[400px] w-full">
                 <LoginForm />
                 <p className="text-sm text-center">Don&apos;t have account?
-                    <span className="text-blue-500 hover:text-orange-500/30 cursor-pointer"
+                    <span className="text-blue-500 hover:text-orange-500 cursor-pointer"
                         onClick={() => setLogin(false)}>
                         &nbsp;Register here
                     </span>
@@ -129,7 +129,7 @@ const LoginOrRegister = () => {
             <section className="max-w-[400px] w-full">
                 <RegisterForm />
                 <p className="text-sm text-center">Already registered?
-                    <span className="text-blue-500 hover:text-orange-500/30 cursor-pointer"
+                    <span className="text-blue-500 hover:text-orange-500 cursor-pointer"
                         onClick={() => setLogin(true)}>
                         &nbsp;Login here
                     </span>

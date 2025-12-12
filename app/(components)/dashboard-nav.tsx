@@ -1,16 +1,18 @@
 import SignOut from "@/app/(components)/sign-out"
 import { auth } from "@/auth"
+import Link from "next/link";
 
 const DashboardNavBar = async () => {
     const session = await auth();
 
     return (
-        <section className="flex items-center justify-between gap-2">
-            <h1 className="text-2xl font-bold">
+        <section className="w-full flex items-center justify-between gap-2">
+            <Link href={'/dashboard'}
+                className="text-2xl font-bold">
                 {session ?
-                    session.user?.name?.split(" ")[0]
+                    'Welcome ' + session.user?.name?.split(" ")[0]
                     : 'Dashboard'}
-            </h1>
+            </Link>
             <div className="flex-1"></div>
             <SignOut />
         </section>
