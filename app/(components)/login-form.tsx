@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { credentialLogin } from "../(actions)/logins"
 import registerCredentials from "../(actions)/register"
+import GoogleSignIn from "@/app/(components)/google-signin";
 
 
 const RegisterForm = () => {
@@ -29,7 +30,7 @@ const RegisterForm = () => {
 
     return (
         <form action={handldSubmit}>
-            <h2 className="text-center">Register Form</h2>
+            <h2 className="text-2xl font-bold text-center">Register</h2>
             <input type="text"
                 name="name"
                 id="name"
@@ -59,7 +60,7 @@ const RegisterForm = () => {
                 placeholder="•••••••••"
             />
             <button type="submit">Register</button>
-            <p className="text-red-500/30 text-center">{error}</p>
+            <p className="text-sm text-red-500/30 text-center">{error}</p>
         </form>
     )
 }
@@ -86,7 +87,7 @@ const LoginForm = () => {
 
     return (
         <form action={handleLogin}>
-            <h2 className="text-center">Login Form</h2>
+            <h2 className="text-2xl font-bold text-center">Login</h2>
             <input type="email"
                 name="email"
                 id="email"
@@ -102,7 +103,7 @@ const LoginForm = () => {
                 placeholder="•••••••••"
             />
             <button type="submit">Login</button>
-            {error && <p className="text-red-500/30 text-center">{error}</p>}
+            {error && <p className="text-sm text-red-500/30 text-center">{error}</p>}
         </form>
     )
 }
@@ -112,22 +113,23 @@ const LoginOrRegister = () => {
 
     if (login) {
         return (
-            <section className="max-w-[400px]">
+            <section className="max-w-[400px] w-full">
                 <LoginForm />
-                <p className="text-center">Don&apos;t have account?
-                    <span className="hover:text-blue-500/30 cursor-pointer"
+                <p className="text-sm text-center">Don&apos;t have account?
+                    <span className="text-blue-500 hover:text-orange-500/30 cursor-pointer"
                         onClick={() => setLogin(false)}>
                         &nbsp;Register here
                     </span>
                 </p>
+                <GoogleSignIn />
             </section>
         )
     } else {
         return (
-            <section className="max-w-[400px]">
+            <section className="max-w-[400px] w-full">
                 <RegisterForm />
-                <p className="text-center">Already registered?
-                    <span className="hover:text-blue-500/30 cursor-pointer"
+                <p className="text-sm text-center">Already registered?
+                    <span className="text-blue-500 hover:text-orange-500/30 cursor-pointer"
                         onClick={() => setLogin(true)}>
                         &nbsp;Login here
                     </span>

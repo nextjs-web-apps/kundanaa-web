@@ -27,14 +27,30 @@ body {
 
 @layer base {
   button {
-    @apply border px-4 py-2 cursor-pointer rounded-md;
+    @apply border px-4 py-2 cursor-pointer rounded-md bg-gray-400 text-black/75;
+
+    &:hover {
+      @apply bg-transparent text-orange-500/30;
+    }
   }
+
 
   form {
     @apply flex flex-col gap-4 px-2 py-4;
 
     input {
       @apply border rounded p-2;
+    }
+  }
+}
+
+/* Overrides the base theme */
+@layer utilities {
+  a {
+    @apply text-orange-500;
+
+    &:hover {
+      @apply text-blue-500/30;
     }
   }
 }

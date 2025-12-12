@@ -7,7 +7,7 @@ import { FaGoogle } from "react-icons/fa"
 const GoogleSignIn = () => {
     const [errorMsgGoogle, dispatchGoogle] = useActionState(googleLogin, undefined)
     return (
-        <section className="max-w-[220px]">
+        <section className="max-w-[225px] mx-auto">
             <form action={dispatchGoogle}>
                 <button type="submit" className="flex items-center gap-3 px-5">
                     <FaGoogle />

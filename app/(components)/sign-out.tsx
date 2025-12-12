@@ -1,10 +1,11 @@
 'use client'
 
 import { signOut } from "next-auth/react"
+import Link from "next/link"
 
 const SignOut = () => {
     return (
-        <button onClick={() => signOut()}>SignOut</button>
+        <Link href={'/'} onClick={() => signOut()}>SignOut</Link>
     )
 }
 

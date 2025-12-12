@@ -1,8 +1,9 @@
 import NextAuth, { DefaultSession } from "next-auth";
 import authConfig from "./auth.config";
+import User from "./app/(models)/User";
+import { connectDB } from "./lib/connectDB";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  ...authConfig,
   // pages: {
   //   signIn: "/",
   // },
@@ -11,9 +12,24 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async signIn({ account, profile }) {
       if (account?.provider === "google") {
         // console.log("Google Profile :", profile);
-        return !!(
-          profile?.email_verified && profile?.email?.endsWith("@gmail.com")
-        );
+        // return !!(
+        //   profile?.email_verified && profile?.email?.endsWith("@gmail.com")
+        // );
+        if (profile?.email_verified && profile?.email?.endsWith("@gmail.com")) {
+          try {
+            await connectDB();
+            const newUser = new User({
+              name: profile.name,
+              email: profile.email,
+              password: "password",
+            });
+            await newUser.save();
+          } catch (error) {
+            console.error("error save google user:", error);
+            return false;
+          }
+          return true;
+        }
       }
       return true;
     },
@@ -32,6 +48,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return session;
     },
   },
+  ...authConfig,
 });
 
 // Extend the Session type to include the user ID
