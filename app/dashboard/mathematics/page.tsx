@@ -1,6 +1,8 @@
 const MathematicsPage = () => {
     return (
-        <div>Mathematics Page</div>
+        <div>
+            <h2 className="underline">Mathematics Page</h2>
+        </div>
     )
 }
 

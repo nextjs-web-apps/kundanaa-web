@@ -15,8 +15,9 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
         { name: 'Mathematics', href: '/dashboard/mathematics' },
         { name: 'Science', href: '/dashboard/science' },
         { name: 'Social', href: '/dashboard/social' },
+        { name: 'Computers', href: '/dashboard/computers' },
     ]
-    
+
     return (
         <section>
             <DashboardNavBar />

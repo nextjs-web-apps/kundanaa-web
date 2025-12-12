@@ -16,21 +16,20 @@ const RegisterForm = () => {
         const confirmPassword = formData.get('confirmPassword') as string
 
         if (password !== confirmPassword) {
-            setError('passwords do not match')
+            setError('passwords do not match...try againg')
+            return
         }
 
         const res = await registerCredentials({ name, email, password })
         if (res.error) {
             setError(res.error);
-        }
-        if (res.success) {
-            setError(res.success)
+            return
         }
     }
 
     return (
         <form action={handldSubmit}>
-            <h2 className="text-2xl font-bold text-center">Register</h2>
+            <h2 className="text-center">Register</h2>
             <input type="text"
                 name="name"
                 id="name"
@@ -53,8 +52,8 @@ const RegisterForm = () => {
                 placeholder="•••••••••"
             />
             <input type="password"
-                name="confrimPassword"
-                id="confrimPassword"
+                name="confirmPassword"
+                id="confirmPassword"
                 minLength={6}
                 required
                 placeholder="•••••••••"
@@ -76,18 +75,19 @@ const LoginForm = () => {
             const res = await credentialLogin({ email, password })
             if (res.error) {
                 setError(res.error)
+                return
             }
         } catch (error) {
-            if (error) {
-                console.error(error)
-                throw new Error(`user do not exist ${error}`)
-            }
+            setError(`${error}`)
+            console.error(error)
+            // throw new Error(`user do not exist ${error}`)
+            return
         }
     }
 
     return (
         <form action={handleLogin}>
-            <h2 className="text-2xl font-bold text-center">Login</h2>
+            <h2 className="text-center">Login</h2>
             <input type="email"
                 name="email"
                 id="email"
@@ -103,7 +103,7 @@ const LoginForm = () => {
                 placeholder="•••••••••"
             />
             <button type="submit">Login</button>
-            {error && <p className="text-sm text-red-500/30 text-center">{error}</p>}
+            {error && <p className="text-red-500/30 text-center">{error}</p>}
         </form>
     )
 }
@@ -115,7 +115,7 @@ const LoginOrRegister = () => {
         return (
             <section className="max-w-[400px] w-full">
                 <LoginForm />
-                <p className="text-sm text-center">Don&apos;t have account?
+                <p className="text-center">Don&apos;t have account?
                     <span className="text-blue-500 hover:text-orange-500 cursor-pointer"
                         onClick={() => setLogin(false)}>
                         &nbsp;Register here

@@ -2,7 +2,8 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import React from 'react'
+import React, { useState } from 'react'
+import { ImMenu } from 'react-icons/im'
 
 interface LinkItem {
   name: string
@@ -14,18 +15,48 @@ interface LinkRowProps {
 }
 
 const SubjectsTabs: React.FC<LinkRowProps> = ({ links }) => {
+  const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen)
+  }
+
   return (
-    <section id='subjects' className='flex flex-col md:flex-row gap-2 mt-2'>
-      {links.map((link) => {
-        const isActive = pathname.startsWith(link.href)
-        return (
-          <Link key={link.href} href={link.href} passHref
-            className={`sub-link ${isActive ? 'sub-active' : ''}`}>
-            {link.name}
-          </Link>
-        )
-      })}
+    <section className='mt-2'>
+      {/* desktop menu */}
+      <div className='hidden md:flex gap-2 justify-end items-center'>
+        <h4 className='flex-1 text-orange-500 uppercase font-mono'>Subjects</h4>
+        {links.map((link) => {
+          const isActive = pathname.startsWith(link.href)
+          return (
+            <Link key={link.href} href={link.href} passHref
+              className={`sub-link ${isActive ? 'sub-active' : ''}`}>
+              {link.name}
+            </Link>
+          )
+        })}
+      </div>
+      {/* mobile show ham */}
+      <div className='md:hidden flex justify-end cursor-pointer'>
+        <h4 className='flex-1 text-orange-500 uppercase font-mono'>Subjects</h4>
+        <ImMenu onClick={toggleMenu} color='orange' size={24} />
+      </div>
+      {/* mobile menu */}
+      {isOpen && (
+        <div className='md:hidden flex flex-col gap-2'>
+          {links.map((link) => {
+            const isActive = pathname.startsWith(link.href)
+            return (
+              <Link key={link.href} href={link.href} passHref
+                className={`sub-link ${isActive ? 'sub-active' : ''}`}
+                onClick={toggleMenu}>
+                {link.name}
+              </Link>
+            )
+          })}
+        </div>
+      )}
     </section>
   )
 }

@@ -1,6 +1,8 @@
 const SocialPage = () => {
     return (
-        <div>Social Page</div>
+        <div>
+            <h2 className="underline">Social Page</h2>
+        </div>
     )
 }
 

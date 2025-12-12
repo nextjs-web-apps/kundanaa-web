@@ -1,6 +1,8 @@
 const TeluguPage = () => {
     return (
-        <div>Telugu Page</div>
+        <div>
+            <h2 className="underline">Telugu Page</h2>
+        </div>
     )
 }
 

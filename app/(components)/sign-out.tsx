@@ -6,8 +6,8 @@ import { FaSignOutAlt } from "react-icons/fa"
 
 const SignOut = () => {
     return (
-        <Link href={'/'} onClick={() => signOut()} className="text-red-500/30 hover:text-red-800">
-            <FaSignOutAlt />
+        <Link href={'/'} onClick={() => signOut()} className="text-red-500">
+            <FaSignOutAlt size={24} />
         </Link>
     )
 }

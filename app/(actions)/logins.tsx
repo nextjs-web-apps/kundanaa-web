@@ -23,10 +23,14 @@ export const credentialLogin = async ({ email, password }: { email: string, pass
             redirectTo: '/dashboard'
         })
     } catch (error) {
+        // return { error: `${error}` }
         if (error instanceof AuthError) {
+            console.log('AuthError :', error.type)
             switch (error.type) {
                 case "CredentialsSignin":
                     return { error: 'invalid credentials' }
+                case "CallbackRouteError":
+                    return { error: 'no user found or invalid credentials' }
                 default:
                     return { error: 'please confirm your email address' }
             }
