@@ -6,6 +6,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-button-background: var(--button-background);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-pops: var(--font-poppins);
@@ -78,6 +79,7 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --button-background: oklch(0.7822 0.1413 306.38);
 }
 
 .dark {
@@ -112,6 +114,7 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --button-background: oklch(0.3093 0.1628 283.27);
 }
 
 @layer base {
@@ -152,7 +155,7 @@
   }
 
   button {
-    @apply px-4 py-2 cursor-pointer rounded-md bg-primary text-primary-foreground;
+    @apply px-4 py-2 cursor-pointer rounded-md bg-button-background;
 
     &:hover {
       @apply text-orange-500;

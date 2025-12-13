@@ -35,29 +35,6 @@ const DashboardPage = async () => {
                 <li>Library Resources</li>
                 <li>Support Services</li>
             </ol>
-            <h1>SAMPLE</h1>
-            <h1>SAMPLE</h1>
-            <h1>SAMPLE</h1>
-            <h1>SAMPLE</h1>
-            <h1>SAMPLE</h1>
-            <h1>SAMPLE</h1>
-            <h1>SAMPLE</h1>
-            <h1>SAMPLE</h1>
-            <h1>SAMPLE</h1>
-            <h1>SAMPLE</h1>
-            <h1>SAMPLE</h1>
-            <h1>SAMPLE</h1>
-            <h1>SAMPLE</h1>
-            <h1>SAMPLE</h1>
-            <h1>SAMPLE</h1>
-            <h1>SAMPLE</h1>
-            <h1>SAMPLE</h1>
-            <h1>SAMPLE</h1>
-            <h1>SAMPLE</h1>
-            <h1>SAMPLE</h1>
-            <h1>SAMPLE</h1>
-            <h1>SAMPLE</h1>
-            <h1>SAMPLE</h1>
         </section>
     )
 }
