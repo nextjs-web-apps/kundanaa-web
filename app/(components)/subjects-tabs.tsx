@@ -25,7 +25,7 @@ const SubjectsTabs: React.FC<LinkRowProps> = ({ links }) => {
   return (
     <section className='mt-2'>
       {/* desktop menu */}
-      <div className='hidden md:flex gap-2 justify-end items-center'>
+      <div className='hidden md:flex justify-end items-center '>
         <h4 className='flex-1 text-orange-500 uppercase font-mono'>Subjects</h4>
         {links.map((link) => {
           const isActive = pathname.startsWith(link.href)
@@ -44,7 +44,7 @@ const SubjectsTabs: React.FC<LinkRowProps> = ({ links }) => {
       </div>
       {/* mobile menu */}
       {isOpen && (
-        <div className='md:hidden flex flex-col gap-2'>
+        <div className='md:hidden flex flex-col'>
           {links.map((link) => {
             const isActive = pathname.startsWith(link.href)
             return (

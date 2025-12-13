@@ -1,14 +1,14 @@
 'use client'
 
 import { signOut } from "next-auth/react"
-import Link from "next/link"
 import { FaSignOutAlt } from "react-icons/fa"
 
 const SignOut = () => {
+    const logout = () => {
+        signOut()
+    }
     return (
-        <Link href={'/'} onClick={() => signOut()} className="text-red-500">
-            <FaSignOutAlt size={24} />
-        </Link>
+        <FaSignOutAlt size={24} color="red" onClick={logout} className="hover:cursor-pointer" />
     )
 }
 

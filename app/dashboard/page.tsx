@@ -12,7 +12,7 @@ const DashboardPage = async () => {
                     <p className="text-[12px] font-mono">{session.user?.email}</p>
                 </>
             )}
-            <h3>This page includes :</h3>
+            <h3 className="underline">This page includes :</h3>
             <h4>Academic Information & Resources</h4>
             <ol>
                 <li>Course Materials</li>
@@ -35,6 +35,29 @@ const DashboardPage = async () => {
                 <li>Library Resources</li>
                 <li>Support Services</li>
             </ol>
+            <h1>SAMPLE</h1>
+            <h1>SAMPLE</h1>
+            <h1>SAMPLE</h1>
+            <h1>SAMPLE</h1>
+            <h1>SAMPLE</h1>
+            <h1>SAMPLE</h1>
+            <h1>SAMPLE</h1>
+            <h1>SAMPLE</h1>
+            <h1>SAMPLE</h1>
+            <h1>SAMPLE</h1>
+            <h1>SAMPLE</h1>
+            <h1>SAMPLE</h1>
+            <h1>SAMPLE</h1>
+            <h1>SAMPLE</h1>
+            <h1>SAMPLE</h1>
+            <h1>SAMPLE</h1>
+            <h1>SAMPLE</h1>
+            <h1>SAMPLE</h1>
+            <h1>SAMPLE</h1>
+            <h1>SAMPLE</h1>
+            <h1>SAMPLE</h1>
+            <h1>SAMPLE</h1>
+            <h1>SAMPLE</h1>
         </section>
     )
 }

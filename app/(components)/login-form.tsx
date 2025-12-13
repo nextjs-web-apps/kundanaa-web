@@ -29,7 +29,7 @@ const RegisterForm = () => {
 
     return (
         <form action={handldSubmit}>
-            <h2 className="text-center">Register</h2>
+            <h2 className="text-center mt-5 mb-10">Register</h2>
             <input type="text"
                 name="name"
                 id="name"
@@ -59,7 +59,7 @@ const RegisterForm = () => {
                 placeholder="•••••••••"
             />
             <button type="submit">Register</button>
-            <p className="text-sm text-red-500/30 text-center">{error}</p>
+            <p className="text-sm text-red-500 text-center">{error}</p>
         </form>
     )
 }
@@ -87,7 +87,7 @@ const LoginForm = () => {
 
     return (
         <form action={handleLogin}>
-            <h2 className="text-center">Login</h2>
+            <h2 className="text-center mt-5 mb-10">Login</h2>
             <input type="email"
                 name="email"
                 id="email"
@@ -103,7 +103,7 @@ const LoginForm = () => {
                 placeholder="•••••••••"
             />
             <button type="submit">Login</button>
-            {error && <p className="text-red-500/30 text-center">{error}</p>}
+            <p className="text-sm text-red-500 text-center">{error}</p>
         </form>
     )
 }
@@ -115,7 +115,7 @@ const LoginOrRegister = () => {
         return (
             <section className="max-w-[400px] w-full">
                 <LoginForm />
-                <p className="text-center">Don&apos;t have account?
+                <p className="text-center mt-5">Don&apos;t have account?
                     <span className="text-blue-500 hover:text-orange-500 cursor-pointer"
                         onClick={() => setLogin(false)}>
                         &nbsp;Register here
@@ -128,7 +128,7 @@ const LoginOrRegister = () => {
         return (
             <section className="max-w-[400px] w-full">
                 <RegisterForm />
-                <p className="text-sm text-center">Already registered?
+                <p className="text-sm text-center mt-5">Already registered?
                     <span className="text-blue-500 hover:text-orange-500 cursor-pointer"
                         onClick={() => setLogin(true)}>
                         &nbsp;Login here

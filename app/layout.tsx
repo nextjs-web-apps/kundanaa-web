@@ -4,6 +4,7 @@ import "./globals.css";
 import NavBar from "./(components)/nav-bar";
 import Providers from "./providers";
 import DarkVeil from "@/app/(components)/ui/DarkVeil"
+import ThemeBackground from "./(components)/theme-bg";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -37,7 +38,7 @@ export default function RootLayout({
         <Providers>
           <NavBar />
           <div className="absolute inset-0 top-0 z-[-1] min-h-screen" >
-            <DarkVeil />
+            <ThemeBackground />
           </div>
           <main className="w-full px-5">
             {children}

@@ -8,9 +8,9 @@ const DashboardNavBar = async () => {
     return (
         <section className="w-full flex items-center justify-between gap-2">
             <Link href={'/dashboard'}
-                className="text-2xl font-bold">
+                className="text-2xl font-bold hover:bg-transparent">
                 {session ?
-                    'Welcome ' + session.user?.name?.split(" ")[0]
+                    session.user?.name?.split(" ")[0]
                     : 'Dashboard'}
             </Link>
             <div className="flex-1"></div>
