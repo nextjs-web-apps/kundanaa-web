@@ -158,7 +158,7 @@
     @apply px-4 py-2 cursor-pointer rounded-md bg-button-background;
 
     &:hover {
-      @apply text-orange-500;
+      @apply text-purple-500;
 
     }
   }
@@ -167,7 +167,7 @@
     @apply flex flex-col gap-4 px-2 py-4 border border-foreground/30 rounded-2xl;
 
     input {
-      @apply rounded p-2 border-b border-foreground/30 focus:outline-none;
+      @apply rounded p-2 border-b border-purple-500/30 focus:outline-none placeholder:text-purple-500/40;
     }
   }
 }
@@ -178,7 +178,7 @@
     @apply text-foreground;
 
     &:hover {
-      @apply text-orange-500 bg-blue-100;
+      @apply text-purple-500 bg-purple-100 dark:text-purple-200 dark:bg-purple-300/30;
     }
   }
 
@@ -187,6 +187,6 @@
   }
 
   .sub-active {
-    @apply bg-blue-400 dark:bg-orange-400 text-background;
+    @apply bg-purple-300 dark:bg-purple-600/30;
   }
 }

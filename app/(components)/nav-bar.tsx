@@ -2,7 +2,7 @@ import ThemeSwitch from "./theme-switch"
 
 const NavBar = () => {
     return (
-        <nav className="flex w-full p-2 bg-purple-500/10">
+        <nav className="flex w-full p-2 items-center bg-purple-500/10">
             <div className="flex-col">
                 <h1>Kundanaa&apos;s Website</h1>
                 <p className="font-mono text-red-500">under construction...</p>

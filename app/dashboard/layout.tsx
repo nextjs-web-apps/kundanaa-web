@@ -1,5 +1,5 @@
 import DashboardNavBar from "@/app/(components)/dashboard-nav"
-import SubjectsTabs from "../(components)/subjects-tabs"
+import SubjectsTabs from "@/app/(components)/subjects-tabs";
 import { auth } from "@/auth"
 import { redirect } from "next/navigation"
 
