@@ -23,7 +23,7 @@ const SubjectsTabs: React.FC<LinkRowProps> = ({ links }) => {
   }
 
   return (
-    <section className='mt-2'>
+    <section>
       {/* desktop menu */}
       <div className='hidden md:flex justify-end items-center'>
         {links.map((link) => {

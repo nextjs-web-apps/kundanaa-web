@@ -5,64 +5,120 @@ import * as z from "zod"
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { prismaLogin } from "@/actions/logins"
+import { credentialLogin } from "@/actions/logins"
 import GoogleSignIn from "@/components/google-signin"
-import { LoginSchema } from "@/schemas"
+import { LoginSchema, RegisterSchema } from "@/schemas"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { credentialRegister } from "@/actions/register"
 
 const RegisterForm = () => {
+    const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
+    const [success, setSuccess] = useState('')
 
-    const handldSubmit = async (formData: FormData) => {
-        const name = formData.get('name') as string
-        const email = formData.get('email') as string
-        const password = formData.get('password') as string
-        const confirmPassword = formData.get('confirmPassword') as string
-
-        if (password !== confirmPassword) {
-            setError('passwords do not match...try again')
-            return
+    const form = useForm<z.infer<typeof RegisterSchema>>({
+        resolver: zodResolver(RegisterSchema),
+        defaultValues: {
+            name: '',
+            email: '',
+            password: '',
+            confirmPassword: '',
         }
+    })
+
+    const onSubmit = async (data: z.infer<typeof RegisterSchema>) => {
+        setLoading(true)
+        credentialRegister(data).then((res) => {
+            if (res.error) {
+                setLoading(false)
+                setSuccess('')
+                setError(res.error)
+            }
+            if (res.success) {
+                setLoading(false)
+                setError('')
+                setSuccess(res.success)
+            }
+        })
     }
 
     return (
-        <form action={handldSubmit}>
-            <h2 className="text-center mt-5 mb-10">Register</h2>
-            <input type="text"
-                name="name"
-                id="name"
-                minLength={1}
-                autoComplete="off"
-                required
-                placeholder="Enter your full name"
-            />
-            <input type="email"
-                name="email"
-                id="email"
-                minLength={1}
-                autoComplete="off"
-                required
-                placeholder="Enter your email"
-            />
-            <input type="password"
-                name="password"
-                id="password"
-                minLength={6}
-                required
-                placeholder="•••••••••"
-            />
-            <input type="password"
-                name="confirmPassword"
-                id="confirmPassword"
-                minLength={6}
-                required
-                placeholder="•••••••••"
-            />
-            <button type="submit">Register</button>
-            <p className="text-sm text-red-500 text-center">{error}</p>
-        </form>
+        <div>
+            <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)}>
+                    <h2 className="text-center mt-5 mb-10">Register</h2>
+                    <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Name</FormLabel>
+                                <FormControl>
+                                    <Input {...field}
+                                        placeholder="John Doe"
+                                        type="text"
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Email</FormLabel>
+                                <FormControl>
+                                    <Input {...field}
+                                        placeholder="johndoe@email.com"
+                                        type="email"
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="password"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Password</FormLabel>
+                                <FormControl>
+                                    <Input {...field}
+                                        placeholder="******"
+                                        type="password"
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="confirmPassword"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Confirm Password</FormLabel>
+                                <FormControl>
+                                    <Input {...field}
+                                        placeholder="******"
+                                        type="password"
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <p className="text-sm text-green-500 text-center">{success}</p>
+                    <p className="text-sm text-red-500 text-center">{error}</p>
+                    <Button type="submit" className="btn">{loading ? 'Registering...' : 'Register'}</Button>
+                </form>
+            </Form>
+        </div>
     )
 }
 
@@ -80,7 +136,7 @@ const LoginForm = () => {
     })
     const onSubmit = async (data: z.infer<typeof LoginSchema>) => {
         setLoading(true)
-        prismaLogin(data).then((res) => {
+        credentialLogin(data).then((res) => {
             if (res.error) {
                 setLoading(false)
                 setSuccess('')
@@ -104,7 +160,7 @@ const LoginForm = () => {
                         name="email"
                         render={({ field }) => (
                             <FormItem className="outline-none">
-                                {/* <FormLabel>Email</FormLabel> */}
+                                <FormLabel>Email</FormLabel>
                                 <FormControl>
                                     <Input {...field}
                                         className="intake"
@@ -124,7 +180,7 @@ const LoginForm = () => {
                         name="password"
                         render={({ field }) => (
                             <FormItem>
-                                {/* <FormLabel>Password</FormLabel> */}
+                                <FormLabel>Password</FormLabel>
                                 <FormControl>
                                     <Input {...field}
                                         className="intake"

@@ -8,8 +8,8 @@ const DashboardPage = async () => {
             {session && (
                 <>
                     <h2>Welcome {session.user?.name?.split(" ")[0]}!</h2>
-                    <p className="text-[12px] font-mono">{session.user?.id}</p>
-                    <p className="text-[12px] font-mono">{session.user?.email}</p>
+                    <p className="text-[12px] font-mono">ID: {session.user?.id}</p>
+                    <p className="text-[12px] font-mono">Email:{session.user?.email}</p>
                 </>
             )}
             <h3 className="underline">This page includes :</h3>

@@ -18,7 +18,7 @@ export const googleLogin = async () => {
     }
 }
 
-export const prismaLogin = async (data: z.infer<typeof LoginSchema>) => {
+export const credentialLogin = async (data: z.infer<typeof LoginSchema>) => {
     // validate and check credentials
     const validatedData = LoginSchema.parse(data)
     if (!validatedData) {

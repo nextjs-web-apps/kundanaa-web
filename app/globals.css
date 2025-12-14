@@ -196,15 +196,15 @@
   }
 
   .intake {
-    @apply border-themebg/30 tracking-wider;
+    @apply tracking-wider;
 
-    &::placeholder {
+    /* &::placeholder {
       @apply text-themebg;
-    }
+    } */
   }
 
   .sub-link {
-    @apply border px-2;
+    @apply border border-themebg/30 px-2;
   }
 
   .sub-active {

@@ -7,7 +7,7 @@ import { prisma } from '@/lib/prisma'
 import { RegisterSchema } from '@/schemas'
 
 // registerCredentials FOR PRISMA
-export const prismaRegister = async (data: z.infer<typeof RegisterSchema>) => {
+export const credentialRegister = async (data: z.infer<typeof RegisterSchema>) => {
     // valildate and check credentials
     const validatedData = RegisterSchema.parse(data)
     if (!validatedData) {
@@ -28,14 +28,14 @@ export const prismaRegister = async (data: z.infer<typeof RegisterSchema>) => {
             return { error: "Email already is in use. Please try another one." };
         }
         const hashedPassword = await bcrypt.hash(password, 10);
-        const user = await prisma.user.create({
+        await prisma.user.create({
             data: {
                 name: name,
                 email: lowerCaseEmail,
                 password: hashedPassword,
             },
         });
-        return { success: "User created successfully " + user.id };
+        return { success: "User created successfully " };
     } catch (error) {
         console.error("Database error:", error);
         if ((error as { code: string }).code === "ETIMEDOUT") {
