@@ -1,6 +1,7 @@
-import SignOut from "@/app/(components)/sign-out"
-import { auth } from "@/auth"
 import Link from "next/link";
+
+import { auth } from "@/auth"
+import SignOut from "@/components/sign-out"
 
 const DashboardNavBar = async () => {
     const session = await auth();

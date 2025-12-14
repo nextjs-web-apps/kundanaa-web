@@ -1,8 +1,9 @@
 'use client'
 
 import { useActionState } from "react"
-import { googleLogin } from "../(actions)/logins"
 import { FaGoogle } from "react-icons/fa"
+
+import { googleLogin } from "@/actions/logins"
 
 const GoogleSignIn = () => {
     const [errorMsgGoogle, dispatchGoogle] = useActionState(googleLogin, undefined)

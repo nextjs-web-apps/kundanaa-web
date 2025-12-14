@@ -1,7 +1,8 @@
 'use client'
 
 import { useTheme } from "next-themes"
-import DarkVeil from "./ui/DarkVeil"
+
+import DarkVeil from "@/components/ui/DarkVeil"
 
 const ThemeBackground = () => {
     const { theme } = useTheme()

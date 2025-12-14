@@ -1,7 +1,7 @@
-import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 
-import LoginOrRegister from "@/app/(components)/login-form";
+import { auth } from "@/auth";
+import LoginOrRegister from "@/components/login-form";
 
 export default async function Home() {
   const session = await auth();

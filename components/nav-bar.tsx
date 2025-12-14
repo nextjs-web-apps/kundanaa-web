@@ -1,4 +1,4 @@
-import ThemeSwitch from "./theme-switch"
+import ThemeSwitch from "@/components/theme-switch"
 
 const NavBar = () => {
     return (

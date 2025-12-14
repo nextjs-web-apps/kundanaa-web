@@ -186,6 +186,23 @@
     }
   }
 
+  .btn {
+    @apply px-4 py-2 cursor-pointer rounded-md bg-themebg text-foreground;
+
+    &:hover {
+      @apply text-purple-500 bg-themebg;
+
+    }
+  }
+
+  .intake {
+    @apply border-themebg/30 tracking-wider;
+
+    &::placeholder {
+      @apply text-themebg;
+    }
+  }
+
   .sub-link {
     @apply border px-2;
   }

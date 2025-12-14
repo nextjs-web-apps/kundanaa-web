@@ -1,7 +1,8 @@
-import DashboardNavBar from "@/app/(components)/dashboard-nav"
-import SubjectsTabs from "@/app/(components)/subjects-tabs";
-import { auth } from "@/auth"
 import { redirect } from "next/navigation"
+
+import { auth } from "@/auth"
+import DashboardNavBar from "@/components/dashboard-nav"
+import SubjectsTabs from "@/components/subjects-tabs";
 
 const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
     const session = await auth()

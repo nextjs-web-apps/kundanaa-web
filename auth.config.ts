@@ -1,9 +1,9 @@
 import { NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
-import { connectDB } from "./lib/connectDB";
-import User from "./app/(models)/User";
 import bcrypt from "bcryptjs";
+import { prisma } from "./lib/prisma";
+import { LoginSchema } from "./schemas";
 
 export default {
   providers: [
@@ -13,30 +13,23 @@ export default {
     }),
     Credentials({
       async authorize(credentials) {
-        await connectDB();
+        const validatedData = LoginSchema.parse(credentials);
+        if (!validatedData) return null;
 
-        const email = credentials.email as string;
-        const password = credentials.password as string;
+        const { email, password } = validatedData;
 
-        if (!email || !password) {
-          throw new Error("missing email or password");
-        }
+        const userFound = await prisma.user.findFirst({
+          where: { email: email.toLowerCase() },
+        });
+        if (!userFound || !userFound.email || !userFound.password) return null;
 
-        const foundUser = await User.findOne({
-          email: email,
-        })
-          .select("+password")
-          .exec();
-        if (!foundUser) {
-          throw new Error("no user found");
-        }
+        const passwordMatch = await bcrypt.compare(
+          password,
+          userFound.password
+        );
+        if (passwordMatch) return userFound;
 
-        const isValid = await bcrypt.compare(password, foundUser.password!);
-        if (!isValid) {
-          throw new Error("invalid password");
-        }
-
-        return foundUser;
+        return null;
       },
     }),
   ],
