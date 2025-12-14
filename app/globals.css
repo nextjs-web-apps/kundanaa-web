@@ -6,7 +6,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-button-background: var(--button-background);
+  --color-themebg: var(--themebg);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-pops: var(--font-poppins);
@@ -79,7 +79,7 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-  --button-background: oklch(0.7822 0.1413 306.38);
+  --themebg: oklch(0.7822 0.1413 306.38);
 }
 
 .dark {
@@ -114,7 +114,7 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
-  --button-background: oklch(0.3093 0.1628 283.27);
+  --themebg: oklch(0.3093 0.1628 283.27);
 }
 
 @layer base {
@@ -155,7 +155,7 @@
   }
 
   button {
-    @apply px-4 py-2 cursor-pointer rounded-md bg-button-background;
+    @apply px-4 py-2 cursor-pointer rounded-md bg-themebg;
 
     &:hover {
       @apply text-purple-500;
@@ -164,10 +164,14 @@
   }
 
   form {
-    @apply flex flex-col gap-4 px-2 py-4 border border-foreground/30 rounded-2xl;
+    @apply flex flex-col gap-4 px-2 py-4 border border-themebg rounded-2xl;
 
     input {
-      @apply rounded p-2 border-b border-purple-500/30 focus:outline-none placeholder:text-purple-500/40;
+      @apply rounded p-2 border-b focus:outline-none selection:bg-transparent;
+
+      &:-webkit-autofill {
+        @apply bg-transparent;
+      }
     }
   }
 }
@@ -187,6 +191,6 @@
   }
 
   .sub-active {
-    @apply bg-purple-300 dark:bg-purple-600/30;
+    @apply bg-purple-300 dark:bg-themebg/30;
   }
 }

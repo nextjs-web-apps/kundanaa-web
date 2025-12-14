@@ -5,6 +5,9 @@ interface IUser extends Document {
   name: string;
   email: string;
   password: string;
+  provider: string;
+  providerId: string;
+  image: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -18,12 +21,25 @@ const UserSchema: Schema = new Schema(
     email: {
       type: String,
       unique: true,
-      required: true,
+      required: [true, "please provide an email"],
+      lowercase: true,
     },
+    // Password is optional because OAuth users won't have one initially
     password: {
       type: String,
-      required: true,
+      required: false,
       select: false, // We explicitly select: false to not return the password hash by default
+    },
+    provider: {
+      type: String,
+    },
+    providerId: {
+      type: String,
+      unique: true,
+      sparse: true, // allow multiple null values for non-google users
+    },
+    image: {
+      type: String,
     },
   },
   { timestamps: true }
@@ -44,8 +60,7 @@ UserSchema.methods.comparePassword = async function (
   candidatePassword: string
 ): Promise<boolean> {
   // Use the select: false field in a method
-  const passwordHash = await (this as any)
-    .model("User")
+  const passwordHash = await this.model("User")
     .findOne({ _id: this._id })
     .select("+password")
     .exec();
@@ -53,6 +68,7 @@ UserSchema.methods.comparePassword = async function (
   return bcrypt.compare(candidatePassword, passwordHash.password);
 };
 
+// Prevention for Next.js "hot reload" model compilation error
 const User: Model<IUser> =
   (mongoose.models?.User as Model<IUser>) ||
   mongoose.model<IUser>("User", UserSchema);

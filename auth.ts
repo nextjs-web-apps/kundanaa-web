@@ -4,25 +4,26 @@ import User from "./app/(models)/User";
 import { connectDB } from "./lib/connectDB";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  // pages: {
-  //   signIn: "/",
-  // },
   session: { strategy: "jwt" },
   callbacks: {
     async signIn({ account, profile }) {
       if (account?.provider === "google") {
-        // console.log("Google Profile :", profile);
-        // return !!(
-        //   profile?.email_verified && profile?.email?.endsWith("@gmail.com")
-        // );
         if (profile?.email_verified && profile?.email?.endsWith("@gmail.com")) {
           try {
             await connectDB();
+
+            const foundUser = await User.findOne({ email: profile?.email });
+            if (foundUser) return true;
+
             const newUser = new User({
-              name: profile.name,
-              email: profile.email,
+              name: profile?.name,
+              email: profile?.email,
               password: "password",
+              provider: account?.provider,
+              providerId: profile?.sub,
+              image: profile?.picture,
             });
+
             await newUser.save();
           } catch (error) {
             console.error("error save google user:", error);

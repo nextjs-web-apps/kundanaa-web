@@ -30,7 +30,7 @@ export const credentialLogin = async ({ email, password }: { email: string, pass
                 case "CredentialsSignin":
                     return { error: 'invalid credentials' }
                 case "CallbackRouteError":
-                    return { error: 'no user found or invalid credentials' }
+                    return { error: 'invalid credentials or no user found' }
                 default:
                     return { error: 'please confirm your email address' }
             }

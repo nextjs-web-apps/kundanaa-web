@@ -16,11 +16,15 @@ const RegisterForm = () => {
         const confirmPassword = formData.get('confirmPassword') as string
 
         if (password !== confirmPassword) {
-            setError('passwords do not match...try againg')
+            setError('passwords do not match...try again')
             return
         }
 
         const res = await registerCredentials({ name, email, password })
+        if (res.success) {
+            await credentialLogin({ email, password })
+        }
+
         if (res.error) {
             setError(res.error);
             return
@@ -34,6 +38,7 @@ const RegisterForm = () => {
                 name="name"
                 id="name"
                 minLength={1}
+                autoComplete="off"
                 required
                 placeholder="Enter your full name"
             />
@@ -41,6 +46,7 @@ const RegisterForm = () => {
                 name="email"
                 id="email"
                 minLength={1}
+                autoComplete="off"
                 required
                 placeholder="Enter your email"
             />
@@ -75,13 +81,12 @@ const LoginForm = () => {
             const res = await credentialLogin({ email, password })
             if (res.error) {
                 setError(res.error)
-                return
+                // return
             }
         } catch (error) {
             setError(`${error}`)
-            console.error(error)
             // throw new Error(`user do not exist ${error}`)
-            return
+            // return
         }
     }
 
@@ -92,6 +97,7 @@ const LoginForm = () => {
                 name="email"
                 id="email"
                 minLength={1}
+                autoComplete="off"
                 required
                 placeholder="Enter your email"
             />
@@ -102,7 +108,7 @@ const LoginForm = () => {
                 required
                 placeholder="•••••••••"
             />
-            <button type="submit">Login</button>
+            <button type="submit">{'Login'}</button>
             <p className="text-sm text-red-500 text-center">{error}</p>
         </form>
     )
@@ -116,7 +122,7 @@ const LoginOrRegister = () => {
             <section className="max-w-[400px] w-full">
                 <LoginForm />
                 <p className="text-center mt-5">Don&apos;t have account?
-                    <span className="text-blue-500 hover:text-orange-500 cursor-pointer"
+                    <span className="font-semibold hover:text-blue-500 text-themebg cursor-pointer"
                         onClick={() => setLogin(false)}>
                         &nbsp;Register here
                     </span>
@@ -129,7 +135,7 @@ const LoginOrRegister = () => {
             <section className="max-w-[400px] w-full">
                 <RegisterForm />
                 <p className="text-sm text-center mt-5">Already registered?
-                    <span className="text-blue-500 hover:text-orange-500 cursor-pointer"
+                    <span className="font-semibold hover:text-blue-500 text-themebg cursor-pointer"
                         onClick={() => setLogin(true)}>
                         &nbsp;Login here
                     </span>
