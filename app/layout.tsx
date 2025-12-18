@@ -36,10 +36,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}>
         <Providers>
+          <ThemeBackground />
           <NavBar />
-          <div className="absolute inset-0 top-0 z-[-1] min-h-screen" >
-            <ThemeBackground />
-          </div>
           <main className="w-full px-5">
             {children}
           </main>
