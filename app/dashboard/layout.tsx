@@ -20,7 +20,7 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
     ]
 
     return (
-        <section>
+        <section className="w-full">
             <DashboardNavBar />
             <SubjectsTabs links={subjectLinks} />
             <section className="mt-5">

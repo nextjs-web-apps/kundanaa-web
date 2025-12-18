@@ -54,9 +54,10 @@ const RegisterForm = () => {
                         name="name"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Name</FormLabel>
+                                <FormLabel className="px-2 tracking-wider">Name</FormLabel>
                                 <FormControl>
                                     <Input {...field}
+                                        className="intake"
                                         placeholder="John Doe"
                                         type="text"
                                     />
@@ -70,9 +71,10 @@ const RegisterForm = () => {
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Email</FormLabel>
+                                <FormLabel className="px-2 tracking-wider">Email</FormLabel>
                                 <FormControl>
                                     <Input {...field}
+                                        className="intake"
                                         placeholder="johndoe@email.com"
                                         type="email"
                                     />
@@ -86,9 +88,10 @@ const RegisterForm = () => {
                         name="password"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Password</FormLabel>
+                                <FormLabel className="px-2 tracking-wider">Password</FormLabel>
                                 <FormControl>
                                     <Input {...field}
+                                        className="intake"
                                         placeholder="******"
                                         type="password"
                                     />
@@ -102,9 +105,10 @@ const RegisterForm = () => {
                         name="confirmPassword"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Confirm Password</FormLabel>
+                                <FormLabel className="px-2 tracking-wider">Confirm Password</FormLabel>
                                 <FormControl>
                                     <Input {...field}
+                                        className="intake"
                                         placeholder="******"
                                         type="password"
                                     />
@@ -160,7 +164,7 @@ const LoginForm = () => {
                         name="email"
                         render={({ field }) => (
                             <FormItem className="outline-none">
-                                <FormLabel>Email</FormLabel>
+                                <FormLabel className="px-2 tracking-wider">Email</FormLabel>
                                 <FormControl>
                                     <Input {...field}
                                         className="intake"
@@ -180,7 +184,7 @@ const LoginForm = () => {
                         name="password"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Password</FormLabel>
+                                <FormLabel className="px-2 tracking-wider">Password</FormLabel>
                                 <FormControl>
                                     <Input {...field}
                                         className="intake"

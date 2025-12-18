@@ -10,9 +10,9 @@ const SignOut = () => {
     return (
         <FaSignOutAlt
             size={24}
-            color="red"
+            color="#fe2e2e"
             onClick={logout}
-            className="hover:cursor-pointer"
+            className="cursor-pointer"
         />
     )
 }

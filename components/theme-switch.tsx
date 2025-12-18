@@ -28,10 +28,20 @@ const ThemeSwitch = () => {
         />
     )
     if (resolvedTheme === 'dark') {
-        return <FiSun className="hover:cursor-pointer" onClick={() => setTheme('light')} />
+        return (
+            <div className="flex items-center space-x-1 px-2 cursor-pointer hover:bg-themebg" onClick={() => setTheme('light')} >
+                <p>Light</p>
+                <FiSun />
+            </div>
+        )
     }
     if (resolvedTheme === 'light') {
-        return <FiMoon className="hover:cursor-pointer" onClick={() => setTheme('dark')} />
+        return (
+            <div className="flex items-center space-x-1 px-2 cursor-pointer hover:bg-themebg" onClick={() => setTheme('dark')} >
+                <p>Dark</p>
+                <FiMoon />
+            </div>
+        )
     }
 }
 

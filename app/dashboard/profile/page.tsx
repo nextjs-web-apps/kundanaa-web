@@ -1,12 +1,11 @@
 import { getUsers } from '@/actions/user-actions'
-import React from 'react'
 
-const UsersPage = async () => {
+const ProfilePage = async () => {
     const users = await getUsers()
 
     return (
         <div>
-            <h2 className='underline'>Users Page</h2>
+            <h2 className='underline'>Profile Page</h2>
             {users.map((user) => (
                 <p key={user.id}>{user.name}</p>
             ))}
@@ -14,4 +13,4 @@ const UsersPage = async () => {
     )
 }
 
-export default UsersPage
+export default ProfilePage
