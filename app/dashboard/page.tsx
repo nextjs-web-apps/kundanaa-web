@@ -4,7 +4,7 @@ const DashboardPage = async () => {
     const session = await auth()
 
     return (
-        <section>
+        <section className="mt-0">
             {session && (
                 <>
                     <h2>Welcome {session.user?.name?.split(" ")[0]}!</h2>
