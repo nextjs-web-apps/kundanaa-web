@@ -11,7 +11,7 @@ const GoogleSignIn = () => {
 
     return (
         <section className="max-w-[220px] mx-auto">
-            <form action={dispatchGoogle} className="border-0">
+            <form action={dispatchGoogle} className="border-0 shadow-none!">
                 <Button type="submit" className="btn bg-blue-300! dark:bg-blue-500!">
                     <FcGoogle />
                     Signin with Google
