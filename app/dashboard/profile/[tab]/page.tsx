@@ -1,5 +1,7 @@
 import { getUsers } from "@/actions/user-actions"
 import ThemeSwitch from "@/components/theme-switch"
+import { Student } from "@/lib/constants"
+import Image from "next/image"
 
 interface PageProps {
   params: Promise<{
@@ -12,12 +14,13 @@ const FriendSection = async () => {
 
   return (
     <div>
-      <div className="text-center border p-2">
+      <div className="text-center border p-2 rounded-2xl shadow-themebg shadow-2xl">
         <h2 className="underline">Currently Registered</h2>
-        {users.map((user, index) => (
+        {users.map((user) => (
           <div key={user.id} className="border flex flex-col md:flex-row justify-between items-center p-2">
-            <p className="tracking-wider">{String(index + 1).padStart(2, '0')}.&nbsp;&nbsp;</p>
-            <p className="flex-1 font-bold text-start">{user.name}</p>
+            {/* <p className="tracking-wider">{String(index + 1).padStart(2, '0')}.&nbsp;&nbsp;</p> */}
+            <Image src={user.image || Student} alt={user.name} width={32} height={32} className="rounded-full" />
+            <p className="flex-1 font-bold text-start ms-2">{user.name}</p>
             <p>Friend-Unfriend / Request / Chat</p>
           </div>
         ))}
@@ -29,7 +32,7 @@ const FriendSection = async () => {
 const SettingSection = () => {
   return (
     <div>
-      <div className="text-center border p-2">
+      <div className="text-center border p-2 rounded-2xl shadow-themebg shadow-2xl">
         <h2 className="underline">Settings Page</h2>
         <div className="border flex flex-col md:flex-row justify-between items-center p-2">
           Theme

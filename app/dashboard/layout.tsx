@@ -22,7 +22,10 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
     return (
         <section className="w-full p-2">
             <DashboardNavBar />
-            <SubjectsTabs links={subjectLinks} />
+            {session.user.email === 'admin@admin.com'
+                ? (null)
+                : <SubjectsTabs links={subjectLinks} />
+            }
             <section className="mt-5">
                 {children}
             </section>

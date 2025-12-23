@@ -2,7 +2,7 @@ import ThemeSwitch from "./theme-switch"
 
 const NavBarSection = () => {
     return (
-        <nav className="flex w-full p-2 items-center bg-black/10">
+        <nav className="flex w-full p-2 items-center border-b-2">
             <div className="wrap">
                 <h1 className="drop-shadow-themebg drop-shadow">Kundanaa&apos;s Website</h1>
                 <p className="text-[12px] font-mono text-red-500">under construction...</p>
