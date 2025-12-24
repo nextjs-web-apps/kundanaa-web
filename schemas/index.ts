@@ -47,3 +47,8 @@ export const QustionSchema = z.object({
     .min(1, "At lease one option is required"),
   correctOptionId: z.string(),
 });
+
+export const AddResourceSchema = z.object({
+  title: z.string().min(1, { error: "title required" }),
+  resource: z.string().min(1, { error: "Please provide resource" }),
+});

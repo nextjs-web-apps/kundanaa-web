@@ -40,7 +40,7 @@ const Dropdown: React.FC<DropdownProps> = ({ buttonContent, children }) => {
     return (
         <div ref={dropdownRef}>
             <Button variant={"outline"} onClick={toggleDropdown}
-                className="w-full flex justify-between"
+                className="w-full flex justify-between text-[18px] font-bold uppercase"
             >
                 {buttonContent}
                 {!isOpen

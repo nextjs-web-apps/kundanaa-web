@@ -1,3 +1,6 @@
+'use server'
+
+import AddResource from "@/components/add-res"
 import Dropdown from "@/components/dropdown"
 
 
@@ -8,8 +11,9 @@ const EnglishPage = () => {
             <div className="flex flex-col gap-2">
                 <Dropdown buttonContent={'Materials'}>
                     <div>
-                        <h4>Materials</h4>
-                        <p>This includes materail for studying purpose.</p>
+                        <h4>Add New Material:</h4>
+                        <AddResource />
+                        <p>This includes materail resources for study purpose.</p>
                     </div>
                 </Dropdown>
                 <Dropdown buttonContent={'Grades'}>
