@@ -4,7 +4,7 @@ import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "@/app/globals.css";
 import Providers from "@/app/providers";
 import NavBarSection from "@/components/nav-bar";
-import ThemeBackground from "@/components/theme-bg";
+// import ThemeBackground from "@/components/theme-bg";
 import FooterSection from "@/components/footer";
 
 const poppins = Poppins({
@@ -37,9 +37,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}>
         <Providers>
-          <div className="fixed left-0 top-0 -z-10 h-full w-full" suppressHydrationWarning>
+          {/* <div className="fixed left-0 top-0 -z-10 h-full w-full" suppressHydrationWarning>
             <ThemeBackground />
-          </div>
+          </div> */}
           <div className="relative mx-auto h-screen w-full max-w-7xl md:px-8 lg:px-12 flex flex-col justify-between">
             <NavBarSection />
             <main className="flex-1 w-full mb-auto">
