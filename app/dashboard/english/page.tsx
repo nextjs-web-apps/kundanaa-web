@@ -2,6 +2,7 @@
 
 import AddResource from "@/components/add-res"
 import Dropdown from "@/components/dropdown"
+import ReadEnglishCsv from "@/components/english-csv"
 
 
 const EnglishPage = () => {
@@ -24,8 +25,8 @@ const EnglishPage = () => {
                 </Dropdown>
                 <Dropdown buttonContent={'Assignments'}>
                     <div>
-                        <h4>Assignments</h4>
                         <p>This includes assignmets to improve your grade.</p>
+                        <ReadEnglishCsv />
                     </div>
                 </Dropdown>
             </div >
