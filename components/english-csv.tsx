@@ -51,7 +51,6 @@ const ReadEnglishCsv: React.FC = () => {
     useEffect(() => { getCSV() }, [])
 
     const handleButtonClick = (qno: string) => {
-        console.log('qno : ', qno)
         setShowAnswer(!showAnswer)
     }
 
@@ -65,7 +64,7 @@ const ReadEnglishCsv: React.FC = () => {
                 <p className={showAnswer && currentQuestion?.correct === 'b' ? 'text-green-500' : ''}>B. {currentQuestion?.b}</p>
                 <p className={showAnswer && currentQuestion?.correct === 'c' ? 'text-green-500' : ''}>C. {currentQuestion?.c}</p>
                 <p className={showAnswer && currentQuestion?.correct === 'd' ? 'text-green-500' : ''}>D. {currentQuestion?.d}</p>
-                <Button variant={'outline'} onClick={() => handleButtonClick(currentQuestion?.correct)}>
+                <Button variant={'outline'} onClick={() => handleButtonClick(currentQuestion?.sno)}>
                     {!showAnswer ? 'Show Answer' : 'Hide Answer'}
                 </Button>
                 <div className='flex justify-between'>

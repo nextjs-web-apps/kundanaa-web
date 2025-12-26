@@ -1,6 +1,10 @@
+import { readEngJson } from "@/actions/user-actions"
 import Dropdown from "@/components/dropdown"
+import MultipleChoices from "@/components/multiple-choice"
 
-const MathematicsPage = () => {
+const MathematicsPage = async () => {
+    const questions = await readEngJson()
+    
     return (
         <div>
             <h2 className="underline">Mathematics Page</h2>
@@ -19,8 +23,8 @@ const MathematicsPage = () => {
                 </Dropdown>
                 <Dropdown buttonContent={'Assignments'}>
                     <div>
-                        <h4>Assignments</h4>
                         <p>This includes assignmets to improve your grade.</p>
+                        <MultipleChoices questions={questions} />
                     </div>
                 </Dropdown>
             </div >

@@ -1,7 +1,10 @@
 "use server";
 
+import { QuestionData, QuestionsProps } from "@/lib/constants";
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
+import Papa, { ParseResult } from "papaparse";
+import * as fs from "fs";
 
 // Create new user in mongodb
 // This is creating user without any provider
@@ -43,5 +46,17 @@ export const getUsers = async () => {
     console.log(error);
     prisma.$disconnect();
     throw error;
+  }
+};
+
+// reading json
+export const readEngJson = async () => {
+  try {
+    const data = fs.readFileSync("public/english.json", "utf-8");
+    const questions = JSON.parse(data);
+    return questions;
+  } catch (error) {
+    console.log("error reading json", error);
+    return null;
   }
 };
