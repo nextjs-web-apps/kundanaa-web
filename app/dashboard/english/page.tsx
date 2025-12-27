@@ -1,11 +1,13 @@
 'use server'
 
+import { readEngJson } from "@/actions/user-actions"
 import AddResource from "@/components/add-res"
 import Dropdown from "@/components/dropdown"
-import ReadEnglishCsv from "@/components/english-csv"
+import MultipleChoices from "@/components/multiple-choice"
 
 
-const EnglishPage = () => {
+const EnglishPage = async () => {
+    const questions = await readEngJson()
 
     return (
         <div>
@@ -27,9 +29,9 @@ const EnglishPage = () => {
                 <Dropdown buttonContent={'Assignments'}>
                     <div>
                         <p>This includes assignmets to improve your grade.</p>
-                        <ReadEnglishCsv />
                     </div>
                 </Dropdown>
+                <MultipleChoices questions={questions} />
             </div >
         </div >
     )

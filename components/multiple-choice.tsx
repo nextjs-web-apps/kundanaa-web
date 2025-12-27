@@ -17,6 +17,7 @@ const MultipleChoices: React.FC<QuestionsProps> = ({ questions }) => {
     const [attempted, setAttempted] = useState(1)
 
     const currentQuestion = allQuestions[currentIndex]
+    const showSubmitButton = (attempted === allQuestions.length || allQuestions.length - 1 == currentIndex)
 
     const handleCheckboxChange = (questionId: string, optionId: string) => {
         setSelectedOptions((prevOpts) => {
@@ -97,14 +98,20 @@ const MultipleChoices: React.FC<QuestionsProps> = ({ questions }) => {
         })
     }
 
+    const resetAll = () => {
+        setCurrentIndex(0)
+        setSelectedOptions({})
+        setResult(null)
+    }
+
     useEffect(() => {
         setAllQuestions(questions)
     }, [questions])
 
     return (
         <div>
-            <h2>Multiple Choice Questions</h2>
-            <div className='border p-5 rounded-2xl'>
+            <h2 className='text-center mt-10 bg-themebg rounded-tr-2xl rounded-tl-2xl'>Multiple Choice Questions</h2>
+            <div className='border p-5 rounded-br-2xl rounded-bl-2xl'>
                 <h4>{currentQuestion?.id}. {currentQuestion?.questionText}</h4>
                 {currentQuestion?.options.map((opt) => (
                     <div key={opt?.id} className='flex justify-between items-center'>
@@ -112,8 +119,8 @@ const MultipleChoices: React.FC<QuestionsProps> = ({ questions }) => {
                         <Input type='checkbox'
                             id={`opt-${currentQuestion?.id}`}
                             className='w-5 mr-0'
-                            value={opt?.text}
-                            checked={selectedOptions[currentQuestion?.id]?.includes(opt?.id)}
+                            value={opt?.text || ''}
+                            checked={selectedOptions[currentQuestion?.id]?.includes(opt?.id) || false}
                             onChange={() => handleCheckboxChange(currentQuestion?.id, opt?.id)}
                         />
                     </div>
@@ -123,9 +130,10 @@ const MultipleChoices: React.FC<QuestionsProps> = ({ questions }) => {
                     <Button onClick={handleNext} disabled={currentIndex === allQuestions.length - 1}><FaArrowRight /></Button>
                 </div>
             </div>
-            {(attempted === allQuestions.length || allQuestions.length - 1 == currentIndex) && (
-                <div className='flex justify-center mt-5'>
-                    <Button type='submit' onClick={handleSubmit}>Submit Answer</Button>
+            {showSubmitButton && (
+                <div className='flex justify-center mt-5 gap-5'>
+                    <Button type='submit' onClick={resetAll}>Reset</Button>
+                    <Button type='submit' onClick={handleSubmit}>Submit Answers</Button>
                 </div>
             )}
             {result && (

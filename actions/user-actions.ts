@@ -1,10 +1,9 @@
 "use server";
 
-import { QuestionData, QuestionsProps } from "@/lib/constants";
-import { prisma } from "@/lib/prisma";
-import { revalidatePath } from "next/cache";
-import Papa, { ParseResult } from "papaparse";
 import * as fs from "fs";
+import { revalidatePath } from "next/cache";
+
+import { prisma } from "@/lib/prisma";
 
 // Create new user in mongodb
 // This is creating user without any provider
