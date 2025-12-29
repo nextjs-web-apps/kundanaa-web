@@ -1,13 +1,13 @@
 'use server'
 
-import { readEngJson } from "@/actions/user-actions"
+import { getJsonFile } from "@/actions/user-actions"
 import AddResource from "@/components/add-res"
 import Dropdown from "@/components/dropdown"
-import MultipleChoices from "@/components/multiple-choice"
+import QuizComponent from "@/components/quiz-comp"
 
 
 const EnglishPage = async () => {
-    const questions = await readEngJson()
+    const questions = await getJsonFile('english.json')
 
     return (
         <div>
@@ -31,8 +31,8 @@ const EnglishPage = async () => {
                         <p>This includes assignmets to improve your grade.</p>
                     </div>
                 </Dropdown>
-                <MultipleChoices questions={questions} />
             </div >
+            <QuizComponent questions={questions} />
         </div >
     )
 }

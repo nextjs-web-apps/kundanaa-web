@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "text": "A light sensitive device that converts drawing, printed text or other images into digital form is",
+    "options": ["Keyboard", "Plotter", "Scanner", "OMR", "None of these"],
+    "correctAnswers": [2]
+  },
+  {
+    "id": 2,
+    "text": "Which protocol provides e-mail facility among different hosts?",
+    "options": ["FTP", "SMTP", "TELNET", "SNMP", "None of these"],
+    "correctAnswers": [1]
+  },
+  {
+    "id": 3,
+    "text": "The basic architecture of computer was developed by",
+    "options": [
+      "John Von Newmann",
+      "Charles Babbage",
+      "Blaise Pascal",
+      "Garden Moore",
+      "None of these"
+    ],
+    "correctAnswers": [0]
+  },
+  {
+    "id": 4,
+    "text": "In order to tell Excel that we are entering a formula in cell, we must begin with an operator such as",
+    "options": ["$", "@", "+", "=", "#"],
+    "correctAnswers": [3]
+  },
+  {
+    "id": 5,
+    "text": "In how many generations a computer can be classified",
+    "options": ["3", "4", "5", "6", "None of these"],
+    "correctAnswers": [3]
+  },
+  {
+    "id": 6,
+    "text": "Fifth genration computers are based on",
+    "options": [
+      "Artificial Intelligence",
+      "Programming Intelligence",
+      "System Knowledge",
+      "VVLSI",
+      "None of these"
+    ],
+    "correctAnswers": [0]
+  },
+  {
+    "id": 7,
+    "text": "First generation of computer was based on which technology?",
+    "options": ["Transistor", "LSI", "VLSI", "Vaccum Tube", "None of these"],
+    "correctAnswers": [3]
+  },
+  {
+    "id": 8,
+    "text": "Microprocessor was introduced in which generation of computer?",
+    "options": [
+      "Second Generation",
+      "Fouth Generation",
+      "Both of above",
+      "Third Generation",
+      "All of these"
+    ],
+    "correctAnswers": [1]
+  },
+  {
+    "id": 9,
+    "text": "Second generation computers are made of",
+    "options": ["Vaccum Tubes", "Transistors", "LSI", "VLSI", "None of these"],
+    "correctAnswers": [1]
+  },
+  {
+    "id": 10,
+    "text": "Which of the following memory is non-volatile?",
+    "options": ["SRAM", "DRAM", "ROM", "All of these", "None of these"],
+    "correctAnswers": [2]
+  }
+]

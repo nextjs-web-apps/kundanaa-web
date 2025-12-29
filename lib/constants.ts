@@ -3,17 +3,13 @@ export const PicNone =
 
 export const Student = "/student.svg";
 
-export interface Option {
-  id: string;
-  text: string;
-}
 export interface QuestionData {
-  id: string;
-  questionText: string;
-  options: Option[];
-  correctOption: string[];
+  id: number;
+  text: string;
+  options: string[];
+  correctAnswers: number[];
 }
 
-export interface QuestionsProps {
+export interface QuizProps {
   questions: QuestionData[];
 }

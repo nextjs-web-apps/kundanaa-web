@@ -1,7 +1,9 @@
+import { getJsonFile } from "@/actions/user-actions"
 import Dropdown from "@/components/dropdown"
+import QuizComponent from "@/components/quiz-comp"
 
-const MathematicsPage = () => {
-    
+const MathematicsPage = async () => {
+    const questions = await getJsonFile('mathematics.json')
     return (
         <div>
             <h2 className="underline">Mathematics Page</h2>
@@ -24,6 +26,7 @@ const MathematicsPage = () => {
                     </div>
                 </Dropdown>
             </div >
+            <QuizComponent questions={questions} />
         </div>
     )
 }

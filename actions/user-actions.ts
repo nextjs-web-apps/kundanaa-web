@@ -4,6 +4,8 @@ import * as fs from "fs";
 import { revalidatePath } from "next/cache";
 
 import { prisma } from "@/lib/prisma";
+import path from "path";
+import { Prisma } from "@/app/generated/prisma";
 
 // Create new user in mongodb
 // This is creating user without any provider
@@ -20,9 +22,12 @@ export const createUser = async ({
   try {
     await prisma.user.create({ data: { name, email } });
     revalidatePath("/");
-  } catch (error: any) {
-    console.log(error);
-    if (error.code === "P2002") {
+  } catch (error) {
+    // console.log(error);
+    if (
+      error instanceof Prisma.PrismaClientKnownRequestError &&
+      error.code === "P2002"
+    ) {
       throw new Error("User already exists");
     }
     prisma.$disconnect();
@@ -48,14 +53,19 @@ export const getUsers = async () => {
   }
 };
 
-// reading json
-export const readEngJson = async () => {
+// get json content from serverside files
+export const getJsonFile = async (fileName: string) => {
   try {
-    const data = fs.readFileSync("public/english.json", "utf-8");
+    const filePath = path.join(
+      process.cwd(),
+      "app/dashboard/_questions",
+      fileName
+    );
+    const data = fs.readFileSync(filePath, "utf8");
     const questions = JSON.parse(data);
     return questions;
   } catch (error) {
-    console.log("error reading json", error);
+    console.log("error getting json", error);
     return null;
   }
 };

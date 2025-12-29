@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "text": "Our country is spiritual country, theirs.......religious.",
+    "options": ["is", "are", "also", "have"],
+    "correctAnswers": [0]
+  },
+  {
+    "id": 2,
+    "text": "Our sir teaches Mathematics.......English.",
+    "options": ["across", "besides", "beside", "both"],
+    "correctAnswers": [1]
+  },
+  {
+    "id": 3,
+    "text": "Please, come......the bathroom.",
+    "options": ["out of", "over", "on", "in"],
+    "correctAnswers": [0]
+  },
+  {
+    "id": 4,
+    "text": "Please don't laugh......those beggars.",
+    "options": ["for", "against", "at", "from"],
+    "correctAnswers": [2]
+  },
+  {
+    "id": 5,
+    "text": "Please, stop.......so many mistakes.",
+    "options": ["to make", "make", "making", "makes"],
+    "correctAnswers": [2]
+  },
+  {
+    "id": 6,
+    "text": "The English.......English.",
+    "options": ["speak", "spoke", "spoken", "is spoken"],
+    "correctAnswers": [3]
+  },
+  {
+    "id": 7,
+    "text": "The rain comes.......the clouds.",
+    "options": ["in", "near", "from", "under"],
+    "correctAnswers": [2]
+  },
+  {
+    "id": 8,
+    "text": "She......her husband for 15 minutes.",
+    "options": ["is beating", "has been beating", "has been beaten", "beats"],
+    "correctAnswers": [1]
+  },
+  {
+    "id": 9,
+    "text": "The ship......, Robinson arrived on the Island.",
+    "options": [
+      "had been broken",
+      "having been broken",
+      "having broken",
+      "has broken"
+    ],
+    "correctAnswers": [1]
+  },
+  {
+    "id": 10,
+    "text": "The stars......counted.",
+    "options": ["can", "can be", "cannot be", "must"],
+    "correctAnswers": [2]
+  }
+]
