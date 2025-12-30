@@ -1,13 +1,18 @@
 'use server'
 
-import { getJsonFile } from "@/actions/user-actions"
 import AddResource from "@/components/add-res"
 import Dropdown from "@/components/dropdown"
 import QuizComponent from "@/components/quiz-comp"
+import { getGoogleSheetsData } from "@/lib/googleSheets"
 
 
 const EnglishPage = async () => {
-    const questions = await getJsonFile('english.json')
+    const range = 'English!A:I'
+    const questions = await getGoogleSheetsData(range)
+
+    if (!questions) {
+        return <div>There is no data.</div>
+    }
 
     return (
         <div>

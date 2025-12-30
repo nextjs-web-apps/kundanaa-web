@@ -1,9 +1,15 @@
-import { getJsonFile } from "@/actions/user-actions"
 import Dropdown from "@/components/dropdown"
 import QuizComponent from "@/components/quiz-comp"
+import { getGoogleSheetsData } from "@/lib/googleSheets"
 
 const MathematicsPage = async () => {
-    const questions = await getJsonFile('mathematics.json')
+    const range = 'Mathematics!A:I'
+    const questions = await getGoogleSheetsData(range)
+
+    if (!questions) {
+        return <div>There is no data.</div>
+    }
+    
     return (
         <div>
             <h2 className="underline">Mathematics Page</h2>
