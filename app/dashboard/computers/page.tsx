@@ -3,7 +3,7 @@ import QuizComponent from "@/components/quiz-comp"
 import { getGoogleSheetsData } from "@/lib/googleSheets"
 
 const ComputersPage = async () => {
-    const range = 'Computer!A:I'
+    const range = 'Computer!A:J'
     const questions = await getGoogleSheetsData(range)
 
     if (!questions) {

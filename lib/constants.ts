@@ -5,9 +5,12 @@ export const Student = "/student.svg";
 
 export interface QuestionData {
   id: number;
+  subject: string;
+  section: string;
   text: string;
   options: string[];
   correctAnswers: number[];
+  solution: string;
 }
 
 export interface QuizProps {
@@ -23,5 +26,6 @@ export type SheetRow = {
   option_1: string;
   option_2: string;
   option_3: string;
-  correctAnswer:number;
+  correctAnswer: number;
+  solution: string;
 };

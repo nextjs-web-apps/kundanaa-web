@@ -3,7 +3,7 @@ import QuizComponent from "@/components/quiz-comp"
 import { getGoogleSheetsData } from "@/lib/googleSheets"
 
 const SocialPage = async () => {
-    const range = 'Social!A:I'
+    const range = 'Social!A:J'
     const questions = await getGoogleSheetsData(range)
 
     if (!questions) {

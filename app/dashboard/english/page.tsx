@@ -7,7 +7,7 @@ import { getGoogleSheetsData } from "@/lib/googleSheets"
 
 
 const EnglishPage = async () => {
-    const range = 'English!A:I'
+    const range = 'English!A:J'
     const questions = await getGoogleSheetsData(range)
 
     if (!questions) {

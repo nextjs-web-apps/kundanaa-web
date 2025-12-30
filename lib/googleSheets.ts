@@ -47,9 +47,12 @@ export async function getGoogleSheetsData(range: string) {
     const jsonData = rows.map(function (row) {
       const obj: QuestionData = {
         id: 0,
+        subject: "",
+        section: "",
         text: "",
         options: [],
         correctAnswers: [],
+        solution: "",
       };
       const options: string[] = [];
       const answers: number[] = [];
@@ -57,6 +60,12 @@ export async function getGoogleSheetsData(range: string) {
       headers.forEach(function (header, index) {
         if (header.toString().toLowerCase() === "id") {
           obj["id"] = Number(row[index]);
+        } else if (header.toString().toLowerCase() === "subject") {
+          obj["subject"] = row[index];
+        } else if (header.toString().toLowerCase() === "section") {
+          obj["section"] = row[index];
+        } else if (header.toString().toLowerCase() === "text") {
+          obj["text"] = row[index];
         } else if (header.toString().toLowerCase().includes("options")) {
           options.push(row[index]);
           obj["options"] = options;
@@ -67,12 +76,9 @@ export async function getGoogleSheetsData(range: string) {
             answers.push(Number(row[index].toString()[i]));
           }
           obj["correctAnswers"] = answers;
-        } else if (header.toString().toLowerCase() === "text") {
-          obj["text"] = row[index];
+        } else if (header.toString().toLowerCase() === "solution") {
+          obj["solution"] = row[index];
         }
-        // } else {
-        //   obj[header.toString().toLowerCase()] = row[index];
-        // }
       });
 
       return obj;

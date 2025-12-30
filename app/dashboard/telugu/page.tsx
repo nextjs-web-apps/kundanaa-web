@@ -3,7 +3,7 @@ import QuizComponent from "@/components/quiz-comp"
 import { getGoogleSheetsData } from "@/lib/googleSheets"
 
 const TeluguPage = async () => {
-    const range = 'Telugu!A:I'
+    const range = 'Telugu!A:J'
     const questions = await getGoogleSheetsData(range)
 
     if (!questions) {
