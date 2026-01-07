@@ -2,10 +2,13 @@
 
 import * as fs from "fs";
 import { revalidatePath } from "next/cache";
+import * as z from "zod";
 
 import { prisma } from "@/lib/prisma";
 import path from "path";
 import { Prisma } from "@/app/generated/prisma";
+import { NextResponse } from "next/server";
+import { QuestionFormData, QuestionSchema } from "@/schemas";
 
 // Create new user in mongodb
 // This is creating user without any provider
@@ -68,4 +71,60 @@ export const getJsonFile = async (fileName: string) => {
     console.log("error getting json", error);
     return null;
   }
+};
+
+export const delQuestion = async ({ questionId }: { questionId: string }) => {
+  try {
+    const response = await prisma.question.delete({
+      where: { id: questionId },
+    });
+    return NextResponse.json({
+      message: `${response.id} is deleted from ${response.id}`,
+    });
+  } catch (error) {
+    console.error("Error deleting question :", error);
+    return NextResponse.json({
+      error: error instanceof Error ? error.message : "error deleting question",
+    });
+  }
+};
+
+// POST QUIZ QUESTION
+export const createQuestion = async (data: QuestionFormData) => {
+  /*   const result = QuestionSchema.safeParse(data);
+  if (!result.success) {
+    console.error("error validating question data");
+    throw new Error("error validating question data");
+  } */
+  try {
+    const question = QuestionSchema.parse(data);
+    const newQuestion = await prisma.question.create({
+      data: {
+        title: question.title,
+        category: question.category,
+        text: question.text,
+        options: question.options,
+        correctOption: question.correctOption,
+      },
+    });
+
+    revalidatePath("/quiz"); // refresh the quiz page data
+    return newQuestion;
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      console.error("error validating data", error.issues);
+      throw error.issues;
+    }
+    console.error("error validating data", error);
+    throw error;
+  }
+};
+
+// GET QUIZ QUESTIONS
+export const getQuestions = async () => {
+  return await prisma.question.findMany({
+    orderBy: {
+      createdAt: "asc",
+    },
+  });
 };

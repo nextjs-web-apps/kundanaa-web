@@ -203,4 +203,40 @@
   .sub-active {
     @apply bg-purple-300 dark:bg-themebg/30;
   }
+
+  .mytable {
+    @apply border-2 border-white;
+
+    thead {
+      @apply border font-bold text-center bg-gray-500;
+
+      tr {
+        @apply border;
+
+        td {
+          @apply border border-white p-2;
+        }
+      }
+    }
+
+    tbody {
+      @apply border;
+
+      tr {
+        @apply border;
+
+        td {
+          @apply border border-white/30 p-2;
+        }
+      }
+    }
+  }
+
+  .form-err-text {
+    @apply text-sm text-right text-red-500/40;
+  }
+
+  .form-success-text {
+    @apply text-sm text-center text-green-500/40;
+  }
 }

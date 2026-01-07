@@ -34,21 +34,41 @@ export const LoginSchema = z.object({
   }),
 });
 
-const AnswerOptionSchema = z.object({
-  id: z.uuid().default(() => crypto.randomUUID()),
-  text: z.string().min(1, { error: "Option cannot be empty" }),
-});
-
-export const QustionSchema = z.object({
-  id: z.uuid().default(() => crypto.randomUUID()),
-  text: z.string().min(1, { message: "Question cannot be empty" }),
-  options: z
-    .array(AnswerOptionSchema)
-    .min(1, "At lease one option is required"),
-  correctOptionId: z.string(),
-});
-
 export const AddResourceSchema = z.object({
   title: z.string().min(1, { error: "title required" }),
   resource: z.string().min(1, { error: "Please provide resource" }),
 });
+
+export enum Subject {
+  ENGLISH = "English",
+  TELUGU = "Telugu",
+  MATHEMATICS = "Mathematics",
+  SCIENCE = "Science",
+  SOCIAL = "Social",
+  COMPUTER = "Computer",
+}
+export const SubjectTitles = [
+  "English",
+  "Telugu",
+  "Mathematics",
+  "Science",
+  "Social",
+  "Computer",
+] as const;
+export const QuestionSchema = z.object({
+  title: z.enum(Subject, {
+    error: () => ({ message: "Please select a valid title" }),
+  }),
+  category: z.string().min(1, "Category is required"),
+  text: z.string().min(5, "Question is too short"),
+  options: z
+    .array(z.string().min(1, "Option cannot be empty"))
+    .min(4, "Exactly 4 options required"),
+  correctOption: z.coerce
+    .number()
+    .int()
+    .min(0)
+    .max(3, "Index must be between 0 and 3"),
+});
+export type QuestionFormData = z.infer<typeof QuestionSchema>;
+export const manyQuestionSchema = z.array(QuestionSchema);

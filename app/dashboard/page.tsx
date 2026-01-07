@@ -1,5 +1,5 @@
 import { auth } from "@/auth"
-import AdminPage from "./admin/page"
+import AdminPage from "./(admin)/page"
 
 const DashboardPage = async () => {
     const session = await auth()
@@ -8,7 +8,6 @@ const DashboardPage = async () => {
         <section className="mt-0">
             {session && session?.user.email !== 'admin@admin.com' ? (
                 <>
-
                     <>
                         <h2>Welcome {session.user?.name?.split(" ")[0]}!</h2>
                         <p className="text-[12px] font-mono">ID: {session.user?.id}</p>
@@ -38,7 +37,6 @@ const DashboardPage = async () => {
                         <li>Library Resources</li>
                         <li>Support Services</li>
                     </ol>
-                    {/* <Increment /> */}
                 </>
             ) : (<AdminPage />)}
         </section>

@@ -22,7 +22,6 @@ model User {
   password      String?
   image         String?
   accounts      Account[]
-  quizResults   QuizResult[]
   assignments   Assignment[]
 
   createdAt DateTime @default(now())
@@ -51,6 +50,14 @@ model Account {
   @@unique([provider, providerAccountId])
 }
 
+// Define an enum for assignment status
+enum Status {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  GRADED
+}
+
 model Assignment {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   userId      String   @db.ObjectId
@@ -66,48 +73,15 @@ model Assignment {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-// Define an enum for assignment status
-enum Status {
-  PENDING
-  IN_PROGRESS
-  COMPLETED
-  GRADED
-}
-
 // Model for a Quiz
-model Quiz {
-  id          String     @id @default(auto()) @map("_id") @db.ObjectId
-  title       Subject    @default(ENGLISH)
-  description String?
-  questions   Question[] // Embedded documents for questions
-}
+model Question {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  category      String
+  text          String
+  options       String[]
+  correctOption Int
 
-// Enum as subjects for title in Quiz
-enum Subject {
-  ENGLISH
-  TELUGU
-  MATHEMATICS
-  SCIENCE
-  SOCIAL
-}
-
-// Composite type for a Question (embedded within Quiz)
-type Question {
-  id              String // Note: using @id and @db.ObjectId for Embedded types in Mongo is not permitted
-  text            String
-  options         AnswerOption[] // Embedded documents for options
-  correctOptionId String // Reference to the correct AnswerOption's id
-}
-
-// Composite type for an Answer Option (embedded within Question)
-type AnswerOption {
-  id   String
-  text String
-}
-
-// Composite type for a user's quiz result (embedded within User)
-type QuizResult {
-  quizId String
-  score  Int
-  date   DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

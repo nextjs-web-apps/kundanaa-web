@@ -1,15 +1,6 @@
 import Dropdown from "@/components/dropdown"
-import QuizComponent from "@/components/quiz-comp"
-import { getGoogleSheetsData } from "@/lib/googleSheets"
 
-const MathematicsPage = async () => {
-    const range = 'Mathematics!A:J'
-    const questions = await getGoogleSheetsData(range)
-
-    if (!questions) {
-        return <div>There is no data.</div>
-    }
-    
+const MathematicsPage = () => {
     return (
         <div>
             <h2 className="underline">Mathematics Page</h2>
@@ -32,7 +23,6 @@ const MathematicsPage = async () => {
                     </div>
                 </Dropdown>
             </div >
-            <QuizComponent questions={questions} />
         </div>
     )
 }
